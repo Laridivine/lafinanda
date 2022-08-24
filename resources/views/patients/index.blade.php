@@ -1,4 +1,4 @@
-@extends('layouts.side')
+@extends('layouts.backend')
  
 @section('content')
 <body>
