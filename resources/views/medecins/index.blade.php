@@ -29,15 +29,15 @@
                             <td>{{ $medecin->id }}</td>
                             <td>{{ $medecin->nom }}</td>
                             <td>{{ $medecin->prenom }}</td>
-                            <td>{{ $medecin->specialite }}</td>
+                            <td>{{ $medecin->specialite->libelle }}</td>
                             <td>{{ $medecin->numero_telephone }}</td>
                             <td>
                             <form action="{{ route('medecins.destroy',$medecin->id) }}" method="Post">
-                            <a class="btn btn-sm btn-primary" href="{{ route('medecins.show',$medecin->id) }}">Voir</a>
-                            <a class="btn btn-sm btn-primary" href="{{ route('medecins.edit',$medecin->id) }}">Modifier</a>
+                            <a class="btn btn-primary" href="{{ route('medecins.show',$medecin->id) }}">Voir</a>
+                            <a class="btn btn-primary" href="{{ route('medecins.edit',$medecin->id) }}">Modifier</a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-primary">Supprimer</button>
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
                             </form>
                             </td>
                             </tr>

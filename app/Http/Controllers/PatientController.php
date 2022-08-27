@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pathologie;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,9 @@ class PatientController extends Controller
 */
 public function index()
 {
-$data['patients'] = Patient::orderBy('id','desc')->paginate(5);
-return view('patients.index', $data);
+$patients = Patient::orderBy('id','desc')->paginate(10);
+$pathologies = Pathologie::orderBy('id','desc')->get();
+return view('patients.index',compact(['patients','pathologies']));
 }
 /**
 * Show the form for creating a new resource.
@@ -24,7 +26,8 @@ return view('patients.index', $data);
 */
 public function create()
 {
-return view('patients.create');
+$pathologies = Pathologie::orderBy('id','desc')->get();
+return view('patients.create',compact(['pathologies']));
 }
 /**
 * Store a newly created resource in storage.
@@ -41,6 +44,7 @@ $request->validate([
 'numero_telephone' => 'required',
 'derniere_consultation' => 'required',
 'derniere_consultation' => 'required',
+'pathologie_id' => 'required',
 'traitement' => 'required',
 
 ]);
@@ -50,6 +54,7 @@ $patient->prenoms = $request->prenoms;
 $patient->adresse = $request->adresse;
 $patient->numero_telephone = $request->numero_telephone;
 $patient->derniere_consultation = $request->derniere_consultation;
+$patient->pathologie_id = $request->pathologie_id;
 $patient->traitement = $request->traitement;
 $patient->save();
 return redirect()->route('patients.index')
@@ -73,15 +78,11 @@ return view('patients.show',compact('patient'));
 */
 public function edit(Patient $patient)
 {
-return view('patients.edit',compact('patient'));
+$patients = Patient::orderBy('id','desc')->get();
+$pathologies = Pathologie::orderBy('id','desc')->get();
+return view('patients.edit',compact('pathologies','patient'));
 }
-/**
-* Update the specified resource in storage.
-*
-* @param  \Illuminate\Http\Request  $request
-* @param  \App\company  $company
-* @return \Illuminate\Http\Response
-*/
+
 public function update(Request $request, $id)
 {
     $request->validate([
@@ -90,15 +91,17 @@ public function update(Request $request, $id)
         'adresse' => 'required',
         'numero_telephone' => 'required',
         'derniere_consultation' => 'required',
+        'pathologie_id' => 'required',
         'traitement' => 'required',
         
         ]);
-        $patient = new Patient();
+        $patient = patient::find($id);
         $patient->nom = $request->nom;
         $patient->prenoms = $request->prenoms;
         $patient->adresse = $request->adresse;
         $patient->numero_telephone = $request->numero_telephone;
         $patient->derniere_consultation = $request->derniere_consultation;
+        $patient->pathologie_id = $request->pathologie_id;
         $patient->traitement = $request->adresse;
         $patient->save();
 return redirect()->route('patients.index')

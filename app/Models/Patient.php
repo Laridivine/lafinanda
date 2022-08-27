@@ -20,7 +20,12 @@ class Patient extends Model
         'adresse',
         'numero_telephone',
         'derniere_consultation',
+        'pathologie_id',
         'traitement',
 
 ];
+
+public function Pathologie(){
+    return $this->belongsTo(Pathologie::class, "pathologie_id");
+}
 }

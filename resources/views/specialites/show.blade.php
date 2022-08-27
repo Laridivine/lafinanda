@@ -1,7 +1,4 @@
-@extends('layouts.side')
 
-
-@section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -22,5 +19,4 @@
             </div>
         </div>
     </div>
-@endsection
 <p class="text-center text-primary"><small></small></p>

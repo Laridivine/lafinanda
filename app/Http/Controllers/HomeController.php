@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
   
 use Illuminate\Http\Request;
+use App\Models\Medecin;
+use App\Models\Specialite;
    
 class HomeController extends Controller
 {
@@ -22,9 +24,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
-    } 
+{
+$medecins = Medecin::orderBy('id','desc')->paginate(10);
+$specialites = Specialite::orderBy('id','desc')->get();
+return view('home',compact(['medecins','specialites']));
+}
    
     /**
      * Show the application dashboard.

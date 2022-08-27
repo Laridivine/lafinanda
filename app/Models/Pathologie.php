@@ -17,4 +17,9 @@ class Pathologie extends Model
         'libelle',
         
     ];
+     
+    public function patients()
+    {
+        return $this->hasMany('App\Models\Patient');
+    }
 }

@@ -17,7 +17,7 @@ class CreateMedecinsTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('specialite');
+            $table->foreignId('specialite_id');
             $table->string('numero_telephone')->unique();
             $table->timestamps();
         });

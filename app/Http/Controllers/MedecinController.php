@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Medecin;
+use App\Models\Specialite;
 use Illuminate\Http\Request;
 
 class MedecinController extends Controller
@@ -14,8 +15,9 @@ class MedecinController extends Controller
 */
 public function index()
 {
-$data['medecins'] = Medecin::orderBy('id','desc')->paginate(5);
-return view('medecins.index', $data);
+$medecins = Medecin::orderBy('id','desc')->paginate(10);
+$specialites = Specialite::orderBy('id','desc')->get();
+return view('medecins.index',compact(['medecins','specialites']));
 }
 /**
 * Show the form for creating a new resource.
@@ -24,7 +26,8 @@ return view('medecins.index', $data);
 */
 public function create()
 {
-return view('medecins.create');
+    $specialites = Specialite::orderBy('id','desc')->get();
+return view('medecins.create',compact(['specialites']));
 }
 /**
 * Store a newly created resource in storage.
@@ -37,7 +40,7 @@ public function store(Request $request)
 $request->validate([
 'nom' => 'required',
 'prenom' => 'required',
-'specialite' => 'required',
+'specialite_id' => 'required',
 'numero_telephone' => 'required',
 
 
@@ -45,7 +48,7 @@ $request->validate([
 $medecin = new Medecin();
 $medecin->nom = $request->nom;
 $medecin->prenom = $request->prenom;
-$medecin->specialite = $request->specialite;
+$medecin->specialite_id = $request->specialite_id;
 $medecin->numero_telephone = $request->numero_telephone;
 $medecin->save();
 return redirect()->route('medecins.index')
@@ -88,10 +91,10 @@ public function update(Request $request, $id)
         
         
         ]);
-        $medecin = new Medecin();
+        $medecin = medecin::find($id);
         $medecin->nom = $request->nom;
         $medecin->prenom = $request->prenom;
-        $medecin->specialite = $request->specialite;
+        $medecin->specialite_id = $request->specialite_id;
         $medecin->numero_telephone = $request->numero_telephone;
         $medecin->save();
 return redirect()->route('medecins.index')

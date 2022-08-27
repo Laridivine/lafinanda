@@ -45,8 +45,8 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>LAFINANDA</h3>
+                <a href="{{ route('home') }}" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"></i>LAFINANDA</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -59,24 +59,13 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="{{ route('home') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2" ></i>Acceuil</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        
-                    </div>
-                    <a href="{{ route('patients.index') }}" class="nav-item nav-link">Gestion des patients</a>
-                    <a href="{{ route('medecins.index') }}" class="nav-item nav-link">Gestion des médecins</a>
-                    <a href="{{ route('specialites.index') }}" class="nav-item nav-link">Gestion des spécialités</a>
-                    <a href="{{ route('pathologies.index') }}" class="nav-item nav-link">Gestion des pathologies</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    <a href="{{ route('home') }}" class="nav-item nav-link active"><i class="fa fa-home" aria-hidden="true"></i>Acceuil</a>
+
+                    <a href="{{ route('patients.index') }}" class="nav-item nav-link"><i class="fa fa-users" aria-hidden="true"></i>Patients</a>
+                    <a href="{{ route('medecins.index') }}" class="nav-item nav-link"><i class="fa fa-user-md" aria-hidden="true"></i>Médecins</a>
+                    <a href="{{ route('specialites.index') }}" class="nav-item nav-link"><i class="fa fa-plus-square" aria-hidden="true"></i>Spécialités</a>
+                    <a href="{{ route('pathologies.index') }}" class="nav-item nav-link"><i class="fa fa-heartbeat" aria-hidden="true"></i>Pathologies</a>
+                    
                 </div>
             </nav>
         </div>

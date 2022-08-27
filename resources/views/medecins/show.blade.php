@@ -1,15 +1,18 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>lafiapp</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+</head>
 
-
-@section('content')
+<body>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2> Voir medecin</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('medecins.index') }}"> Retour</a>
-            </div>
+            
         </div>
     </div>
 
@@ -30,7 +33,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Spécialité:</strong>
-                {{ $medecin->specialite }}
+                {{ $medecin->specialite->libelle}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -40,5 +43,11 @@
             </div>
         </div>
     </div>
-@endsection
+
+    <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('medecins.index') }}"> Retour</a>
+            </div>
+
 <p class="text-center text-primary"><small></small></p>
+</body>
+</html>

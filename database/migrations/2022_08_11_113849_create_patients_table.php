@@ -20,6 +20,7 @@ class CreatePatientsTable extends Migration
         $table->string('adresse');
         $table->string('numero_telephone')->unique();
         $table->date('derniere_consultation');
+        $table->foreignId('pathologie_id');
         $table->string('traitement');
         $table->timestamps();
     });

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Edit Company Form - Laravel 8 CRUD Tutorial</title>
+<title>Lafinanda</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
 </head>
 <body>
@@ -13,7 +13,7 @@
 <h2>Modifier patient</h2>
 </div>
 <div class="pull-right">
-<a class="btn btn-primary" href="{{ route('patients.index') }}" enctype="multipart/form-data"> Back</a>
+<a class="btn btn-primary" href="{{ route('patients.index') }}" enctype="multipart/form-data"> Retour</a>
 </div>
 </div>
 </div>
@@ -75,7 +75,25 @@
 <div class="form-group">
 <strong>Dernière consultation:</strong>
 <input type="date" name="derniere_consultation" value="{{ $patient->derniere_consultation }}"class="form-control" placeholder="Dernière consultation">
+
 @error('nom')
+<div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+@enderror
+</div>
+</div>
+
+<div class="row">
+<div class="col-xs-8 col-sm-8 col-md-8">
+<div class="form-group">
+<strong>Pathologie:</strong>
+<input type="text" name="pathologie_id" value="{{ $patient->pathologie->libelle }}"class="form-control" placeholder="Pathologie">
+<select name="pathologie_id" id="">
+    <option value=""></option>
+    @foreach ($pathologies as $pathologie)
+<option value="{{$pathologie->id}}">{{$pathologie->libelle}}</option>
+    @endforeach
+</select>
+@error('pathologie_id')
 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
 @enderror
 </div>
