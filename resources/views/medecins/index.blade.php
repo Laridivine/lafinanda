@@ -37,7 +37,7 @@
                             <a class="btn btn-primary" href="{{ route('medecins.edit',$medecin->id) }}">Modifier</a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit"  class="btn btn-danger">Supprimer</button>
                             </form>
                             </td>
                             </tr>

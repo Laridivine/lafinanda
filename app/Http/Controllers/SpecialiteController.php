@@ -15,7 +15,7 @@ class SpecialiteController extends Controller
 */
 public function index()
 {
-$data['specialites'] = Specialite::orderBy('id','desc')->paginate(5);
+$data['specialites'] = Specialite::orderBy('id','asc')->paginate(5);
 return view('specialites.index', $data);
 }
 /**

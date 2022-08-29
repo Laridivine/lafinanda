@@ -38,8 +38,8 @@
                             <div class="row mb-3">
                                     <label for="" class="col-sm-2 col-form-label">Prenom</label>
                                 <div class="col-sm-10">
-                                        <input type="text" name="prenoms"class="form-control" id="">
-                                        @error('prenoms')
+                                        <input type="text" name="prenom"class="form-control" id="">
+                                        @error('prenom')
                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -51,7 +51,7 @@
                                 <select name="specialite_id" id="">
                                     <option value=""></option>
                                     @foreach ($specialites as $specialite)
-                                <option value="{{$specialite->id}}">{{$specialite->libelle}}</option>
+                                <option value="{{$specialite->id}}">{{$specialite->id}}</option>
                                     @endforeach
                                 </select>
                                 @error('specialite')

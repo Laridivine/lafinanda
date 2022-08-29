@@ -10,7 +10,7 @@
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
-<h2>Modifier Pathologie</h2>
+<h2>Modifier pathologie</h2>
 </div>
 <div class="pull-right">
 <a class="btn btn-primary" href="{{ route('pathologies.index') }}" enctype="multipart/form-data"> Retour</a>
@@ -30,7 +30,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
 <strong>Libellé:</strong>
-<input type="text" name="libelle" class="form-control" placeholder="Libellé">
+<input type="text" value="{{ $pathologie->libelle }}" name="libelle" class="form-control" placeholder="Libellé">
 @error('libelle')
 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
 @enderror

@@ -23,6 +23,7 @@
 <th> Prenoms</th>
 <th> Adresse</th>
 <th> Numéro de téléphone</th>
+<th> Pathologie</th>
 <th> Dernière consultation</th>
 
 
@@ -35,6 +36,7 @@
 <td>{{ $patient->prenoms }}</td>
 <td>{{ $patient->adresse }}</td>
 <td>{{ $patient->numero_telephone }}</td>
+<td>{{ $patient->pathologie->libelle }}</td>
 <td>{{ $patient->derniere_consultation }}</td>
 
 <td>
@@ -43,7 +45,7 @@
 <a class="btn btn-primary" href="{{ route('patients.edit',$patient->id) }}">Modifier</a>
 @csrf
 @method('DELETE')
-<button type="submit" class="btn btn-danger">Supprimer</button>
+<button type="submit" onclick="return confirm('Etes-vous sûr?')" class="btn btn-danger">Supprimer</button>
 </form>
 </td>
 </tr>

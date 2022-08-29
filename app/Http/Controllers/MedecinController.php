@@ -26,7 +26,7 @@ return view('medecins.index',compact(['medecins','specialites']));
 */
 public function create()
 {
-    $specialites = Specialite::orderBy('id','desc')->get();
+    $specialites = Specialite::orderBy('id','asc')->get();
 return view('medecins.create',compact(['specialites']));
 }
 /**
@@ -48,7 +48,7 @@ $request->validate([
 $medecin = new Medecin();
 $medecin->nom = $request->nom;
 $medecin->prenom = $request->prenom;
-$medecin->specialite_id = $request->specialite_id;
+$medecin->specialite_id = $request->specialite->libelle;
 $medecin->numero_telephone = $request->numero_telephone;
 $medecin->save();
 return redirect()->route('medecins.index')
@@ -94,7 +94,7 @@ public function update(Request $request, $id)
         $medecin = medecin::find($id);
         $medecin->nom = $request->nom;
         $medecin->prenom = $request->prenom;
-        $medecin->specialite_id = $request->specialite_id;
+        $medecin->specialite_id = $request->specialite->libelle;
         $medecin->numero_telephone = $request->numero_telephone;
         $medecin->save();
 return redirect()->route('medecins.index')

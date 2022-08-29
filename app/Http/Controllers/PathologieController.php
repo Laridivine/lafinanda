@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Pathologie;
 use Illuminate\Http\Request;
 
+
 class PathologieController extends Controller
 {
-      /**
+     /**
 * Display a listing of the resource.
 *
 * @return \Illuminate\Http\Response
 */
 public function index()
 {
-$data['pathologies'] = Pathologie::orderBy('id','desc')->paginate(5);
+$data['pathologie'] = Pathologie::orderBy('id','asc')->paginate(5);
 return view('pathologies.index', $data);
 }
 /**
@@ -42,7 +44,7 @@ $pathologie = new Pathologie();
 $pathologie->libelle = $request->libelle;
 $pathologie->save();
 return redirect()->route('pathologies.index')
-->with('success','Pathologié créé avec succès.');
+->with('success','Pathologie créé avec succès.');
 }
 /**
 * Display the specified resource.
@@ -57,7 +59,7 @@ return view('pathologies.show',compact('pathologie'));
 /**
 * Show the form for editing the specified resource.
 *
-* @param  \App\Pathologie $pathologie
+* @param  \App\Specialite $specialite
 * @return \Illuminate\Http\Response
 */
 public function edit(Pathologie $pathologie)
@@ -68,7 +70,7 @@ return view('pathologies.edit',compact('pathologie'));
 * Update the specified resource in storage.
 *
 * @param  \Illuminate\Http\Request  $request
-* @param  \App\Pathologie  $pathologie
+* @param  \App\Specialite  $specialite
 * @return \Illuminate\Http\Response
 */
 public function update(Request $request, $id)
@@ -88,12 +90,12 @@ return redirect()->route('pathologies.index')
 /**
 * Remove the specified resource from storage.
 *
-* @param  \App\Pathologie  $pathologie
+* @param  \App\Company  $company
 * @return \Illuminate\Http\Response
 */
 public function destroy(Pathologie $pathologie)
 {
-$pathologie ->delete();
+    $pathologie->delete();
 return redirect()->route('pathologies.index')
 ->with('success','Pathologie supprimée');
 }

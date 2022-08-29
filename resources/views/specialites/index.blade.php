@@ -32,7 +32,7 @@
 <a class="btn btn-primary" href="{{ route('specialites.edit',$specialite->id) }}">Modifier</a>
 @csrf
 @method('DELETE')
-<button type="submit" class="btn btn-danger">Supprimer</button>
+<button type="submit" onclick="return confirm('Etes-vous sûr?')" class="btn btn-danger">Supprimer</button>
 </form>
 </td>
 </tr>

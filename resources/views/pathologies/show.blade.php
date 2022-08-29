@@ -5,7 +5,7 @@
                 <h2> Voir pathologie</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('patologies.index') }}"> Retour</a>
+                <a class="btn btn-primary" href="{{ route('pathologies.index') }}"> Retour</a>
             </div>
         </div>
     </div>
