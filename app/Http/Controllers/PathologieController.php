@@ -15,7 +15,7 @@ class PathologieController extends Controller
 */
 public function index()
 {
-$data['pathologie'] = Pathologie::orderBy('id','asc')->paginate(5);
+$data['pathologies'] = Pathologie::orderBy('id','asc')->paginate(5);
 return view('pathologies.index', $data);
 }
 /**
@@ -40,9 +40,9 @@ $request->validate([
 
 
 ]);
-$pathologie = new Pathologie();
-$pathologie->libelle = $request->libelle;
-$pathologie->save();
+$pathology = new Pathologie();
+$pathology->libelle = $request->libelle;
+$pathology->save();
 return redirect()->route('pathologies.index')
 ->with('success','Pathologie créé avec succès.');
 }
@@ -52,9 +52,9 @@ return redirect()->route('pathologies.index')
 * @param  \App\Specialite $specialite
 * @return \Illuminate\Http\Response
 */
-public function show(Pathologie $pathologie)
+public function show(Pathologie $pathology)
 {
-return view('pathologies.show',compact('pathologie'));
+return view('pathologies.show',compact('pathology'));
 } 
 /**
 * Show the form for editing the specified resource.
@@ -62,9 +62,9 @@ return view('pathologies.show',compact('pathologie'));
 * @param  \App\Specialite $specialite
 * @return \Illuminate\Http\Response
 */
-public function edit(Pathologie $pathologie)
+public function edit(Pathologie $pathology)
 {
-return view('pathologies.edit',compact('pathologie'));
+return view('pathologies.edit',compact('pathology'));
 }
 /**
 * Update the specified resource in storage.
@@ -81,9 +81,9 @@ public function update(Request $request, $id)
         
         
         ]);
-        $pathologie = new Pathologie();
-        $pathologie->libelle = $request->libelle;
-        $pathologie->save();
+        $pathology = new Pathologie();
+        $pathology->libelle = $request->libelle;
+        $pathology->save();
 return redirect()->route('pathologies.index')
 ->with('success','Pathologie mis à jour avec succès');
 }
@@ -93,9 +93,9 @@ return redirect()->route('pathologies.index')
 * @param  \App\Company  $company
 * @return \Illuminate\Http\Response
 */
-public function destroy(Pathologie $pathologie)
+public function destroy(Pathologie $pathology)
 {
-    $pathologie->delete();
+    $pathology->delete();
 return redirect()->route('pathologies.index')
 ->with('success','Pathologie supprimée');
 }

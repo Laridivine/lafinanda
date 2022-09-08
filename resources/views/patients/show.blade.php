@@ -1,70 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>lafinanda</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-</head>
-<body>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Fiche patient</h2>
+@extends('layouts.menu')
+
+@section('content')
+
+
+<div class="container shadow-none bg-light mt-5  " style="width: 50rem; margin-top:100px">
+        <div class="row card p-5 text-center">
+            <div class="row margin-tb">
+                <div class="col-sm-11">
+                    <h2>Voir un patient </h2>
+                </div>
             </div>
-            
         </div>
+        </div>
+ 
+<div class="container card shadow-lg p-3 mb-5" style="width: 50rem;">
+    <div class="row mb-12 p-3">
+      <label for="nom" class="col-sm-3 col-form-label">Nom</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $patient->nom }}"  name="nom" id="nom" placeholder="Nom" disabled readonly>
+      </div>
     </div>
 
+    <div class="row mb-12 p-3">
+      <label for="prenom" class="col-sm-3 col-form-label">Prenom</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $patient->prenoms }}"  name="prenoms" id="patient_prenom" placeholder="Prenom" disabled readonly>
+      </div>
+    </div>
+ 
+    <div class="row mb-12 p-3">
+      <label for="adresse" class="col-sm-3 col-form-label">Adresse</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $patient->adresse }}"  name="adresse" id="patient_adresse" placeholder="Adresse" disabled readonly>
+      </div>
+    </div>
+ 
+    <div class="row mb-12 p-3">
+      <label for="telephone" class="col-sm-3 col-form-label">Telephone</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $patient->numero_telephone }}"  name="numero_telephone" id="patient_telephone" placeholder="Telephone" disabled readonly>
+      </div>
+    </div>
 
-    
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nom:</strong>
-                {{ $patient->nom }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Prenom:</strong>
-                {{ $patient->prenoms }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Adresse:</strong>
-                {{ $patient->adresse }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Numéro de téléphone:</strong>
-                {{ $patient->numero_telephone }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Dernière consultation:</strong>
-                {{ $patient->derniere_consultation }}
-            </div>
-        </div>
+    <div class="row mb-12 p-3">
+      <label for="pathology" class="col-sm-3 col-form-label">Pathologie</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $patient->pathologie->libelle }}"  name="pathology" id="patient_pathology" placeholder="Pathologie" disabled readonly>
+      </div>
+    </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pathologie:</strong>
-                {{ $patient->pathologie->libelle }}
-            </div>
-        </div>
+    <div class="row mb-12 p-3">
+      <label for="traitement" class="col-sm-3 col-form-label">Traitement</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $patient->traitement }}"  name="traitement" id="patient_traitement" placeholder="Traitement" disabled readonly>
+      </div>
+    </div>
+</div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Traitement:</strong>
-                {{ $patient->traitement }}
-            </div>
-        </div>
-        <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('patients.index') }}"> Retour</a>
-            </div>
-        
-</body>    
-</html>
-
+@endsection

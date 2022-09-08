@@ -72,7 +72,8 @@ return view('medecins.show',compact('medecin'));
 */
 public function edit(Medecin $medecin)
 {
-return view('medecins.edit',compact('medecin'));
+    $specialites = Specialite::orderBy('id','asc')->get();
+    return view('medecins.edit',compact(['specialites', 'medecin']));
 }
 /**
 * Update the specified resource in storage.

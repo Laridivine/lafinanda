@@ -1,78 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title></title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-</head>
-<body>
-<div class="container mt-2">
-<div class="row">
-<div class="col-lg-12 margin-tb">
-<div class="pull-left">
-<h2>Modifier Medecin</h2>
-</div>
-<div class="pull-right">
-<a class="btn btn-primary" href="{{ route('medecins.index') }}" enctype="multipart/form-data"> Retour</a>
-</div>
-</div>
-</div>
-@if(session('status'))
-<div class="alert alert-success mb-1 mt-1">
-{{ session('status') }}
-</div>
+@extends('layouts.menu')
+
+@section('content')
+<div class="container shadow-none bg-light mt-5  " style="width: 50rem; margin-top:100px;">
+        <div class="row card p-5 text-center">
+            <div class="row margin-tb">
+                <div class="col-sm-11">
+                    <h2>Edit </h2>
+                </div>
+            </div>
+        </div>
+        </div>
+ 
+    @if ($errors->any())
+    <div class="alert alert-warning">
+        <strong>Errors!</strong>Please chek carefully....<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
-<form action="{{ route('medecins.update',$medecin->id) }}" method="POST" enctype="multipart/form-data">
-@csrf
-@method('PUT')
+ 
+ <form action="{{ route('medecins.update',$medecin->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+ 
+   <div class="container card shadow-lg p-3 mb-5" style="width: 50rem;">
+    <div class="row mb-12 p-3">
+      <label for="" class="col-sm-3 col-form-label">Nom</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $medecin->nom }}" name="nom" id="nom" placeholder="Nom">
+      </div>
+    </div>
+ 
+    <div class="row mb-12 p-3">
+      <label for="prenom" class="col-sm-3 col-form-label">Prenom</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $medecin->prenom }}" name="prenom" id="prenom" placeholder="Prenom">
+      </div>
+    </div>
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-<strong>Nom:</strong>
-<input type="text" name="nom" class="form-control" placeholder="Nom">
-@error('nom')
-<div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-@enderror
-</div>
-</div>
+   
+    <div class="row mb-12 p-3">
+      <label for="" class="col-sm-3 col-form-label">Spécialité</label>
+      <div class="col-sm-9">
+                    <select name="specialite_id" class="form-control" id="">
+                        <option value=""></option>
+                        @foreach ($specialites as $specialite)
+                        <option value="{{$specialite->id}}">{{$specialite->libelle}}</option>
+                        @endforeach
+                    </select>
+                    @error('specialite')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+    </div>
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-<strong>Prenoms:</strong>
-<input type="text" name="prenom" class="form-control" placeholder="Prenoms">
-@error('prenom')
-<div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-@enderror
-</div>
-</div>
+    <div class="row mb-12 p-3">
+      <label for="telephone" class="col-sm-3 col-form-label">Telephone</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $medecin->numero_telephone }}" name="telephone" id="telephone" placeholder="Telephone">
+      </div>
+    </div>
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-<strong>Centre de santé:</strong>
-<input type="string" name="specialite" class="form-control" placeholder="S^écialité">
-@error('specialite')
-<div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-@enderror
-</div>
-</div>
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-<strong>Numéro de téléphone:</strong>
-<input type="string" name="numero_telephone" class="form-control" placeholder="Numero de telephone">
-@error('numero_telephone')
-<div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-@enderror
-</div>
-</div>
-
-<button type="submit" class="btn btn-primary ml-3">Enregistrer</button>
+    
+ <br>
+ 
+      <div class="row card text-center">
+ 
+      <div class="col-sm-12 p-3">
+        <button type="submit" class="btn btn-primary btn-lg shadow-lg">Enregistrer</button>
+        <a class="btn btn-danger btn-lg shadow-lg" href="{{ route('medecins.index') }}"> Annuler</a>
+      </div>
+ 
+    </div>
+ 
 </div>
 </form>
-</div>
-</body>
-</html>
+@endsection

@@ -19,7 +19,7 @@ class Medecin extends Model
         'specialite',
         'numero_telephone',
     ];
-    public function Specialite(){
+    public function specialite(){
         return $this->belongsTo(Specialite::class, "specialite_id");
     }
 }

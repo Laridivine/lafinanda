@@ -1,41 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>lafiapp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-</head>
-<body>
-<div class="container mt-2">
-<div class="row">
-<div class="col-lg-12 margin-tb">
-<div class="pull-left mb-2">
-<h2>Enregistrer une spécialité</h2>
+@extends('layouts.menu')
+
+@section('content')
+
+<div class="container shadow-none bg-light mt-3  " style="width: 50rem; margin-top:60px">
+    <div class="row card p-5 text-center">
+        <div class="row margin-tb">
+            <div class="col-sm-11">
+                <h2>Enregistrer une spécialité</h2>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="pull-right">
-<a class="btn btn-primary" href="{{ route('specialites.index') }}"> Retour</a>
-</div>
-</div>
-</div>
-@if(session('status'))
-<div class="alert alert-success mb-1 mt-1">
-{{ session('status') }}
+<br><br>
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <strong>Errors!</strong>Please chek carefully....<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </div>
 @endif
-<form action="{{ route('specialites.store') }}" method="POST" enctype="multipart/form-data">
-@csrf
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-<strong>Libellé:</strong>
-<input type="string" name="libelle" class="form-control" placeholder="Libellé">
-@error('libelle')
-<div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-@enderror
-</div>
-</div>
-<button type="submit" class="btn btn-primary ml-3">Enregistrer</button>
-</div>
-</form>
-</body>
-</html>
+
+<form action="{{ route('specialites.store') }}" method="POST">
+    @csrf
+    <form>
+
+        <div class="container card shadow-lg p-3 mb-5" style="width: 50rem;">
+            <div class="row mb-12 p-3">
+                <label for="" class="col-sm-3 col-form-label">Libelle</label>
+                <div class="col-sm-9">
+                    <input type="string" class="form-control" name="libelle" id="" placeholder="Libelle">
+                </div>
+            </div>
+            
+            <br>
+
+            <div class="row card text-center">
+
+                <div class="col-sm-12 p-3">
+                    <button type="submit" class="btn btn-primary btn-lg shadow-lg">Enregistrer</button>
+                    <a class="btn btn-danger btn-lg shadow-lg" href="{{ route('specialites.index') }}"> Annuler</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    @endsection

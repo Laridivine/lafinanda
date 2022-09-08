@@ -1,56 +1,65 @@
-@extends('layouts.backend')
- 
+@extends('layouts.menu')
+
 @section('content')
-<body>
-<div class="container mt-2">
-<div class="row">
-<div class="col-lg-12 margin-tb">
 
-<div class="pull-right mb-2">
-<a class="btn btn-success" href="{{ route('patients.create') }}"> Enregistrer un patient</a>
-</div>
-</div>
-</div>
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-<p>{{ $message }}</p>
-</div>
-@endif
-<table class="table table-bordered">
-<tr>
-<th>No</th>
-<th> Nom</th>
-<th> Prenoms</th>
-<th> Adresse</th>
-<th> Numéro de téléphone</th>
-<th> Pathologie</th>
-<th> Dernière consultation</th>
+    <div class="container" style="margin-top: 90px; margin-right:60px;" >
+        <div class="row">
+            <div class="row margin-tb">
+                <div class="col-sm-9">
+                    <h3>Liste des patients</h3>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-primary" href="{{ route('patients.create') }}"> Enregistrer un Patient</a>
+                </div>
+            </div>
+        </div>
+        </div>
 
+    @if ($message = Session::get('success'))
+        <div class="alert alert-primary card shadow">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 
-<th width="280px">Action</th>
-</tr>
-@foreach ($patients as $patient)
-<tr>
-<td>{{ $patient->id }}</td>
-<td>{{ $patient->nom }}</td>
-<td>{{ $patient->prenoms }}</td>
-<td>{{ $patient->adresse }}</td>
-<td>{{ $patient->numero_telephone }}</td>
-<td>{{ $patient->pathologie->libelle }}</td>
-<td>{{ $patient->derniere_consultation }}</td>
+    <div style="margin-left:250px; margin-right:50px">
 
-<td>
-<form action="{{ route('patients.destroy',$patient->id) }}" method="Post">
-<a class="btn btn-primary" href="{{ route('patients.show',$patient->id) }}">Voir</a>
-<a class="btn btn-primary" href="{{ route('patients.edit',$patient->id) }}">Modifier</a>
-@csrf
-@method('DELETE')
-<button type="submit" onclick="return confirm('Etes-vous sûr?')" class="btn btn-danger">Supprimer</button>
-</form>
-</td>
-</tr>
-@endforeach
-</table>
-{!! $patients->links() !!}
-</body>
+    <table class="table table-bordered table-hover" >
+        <tr>
+            <th>No</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Adresse</th>
+            <th>Telephone</th>
+            <th>Pathologie</th>
+            <th>Traitement</th>
+
+            <th width="230px">Actions</th>
+        </tr>
+        @foreach ($patients as $patient)
+        <tr>
+                <td>{{ $patient->id }}</td>
+                <td>{{ $patient->nom }}</td>
+                <td>{{ $patient->prenoms }}</td>
+                <td>{{ $patient->adresse }}</td>
+                <td>{{ $patient->numero_telephone }}</td>
+                <td>{{ $patient->pathologie->libelle }}</td>
+                <td>{{ $patient->traitement }}</td>
+            <td class="shadow">
+                <form action="{{ route('patients.destroy',$patient->id) }}" method="POST">
+
+                    <a class="btn btn-success btn-sm" href="{{ route('patients.show',$patient->id) }}"><i class="fa-solid fa-eye"></i>Voir</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('patients.edit',$patient->id) }}"><i class="fa-solid fa-pen-to-square"></i>Modifier</a>
+
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('Etes-vous sûr?')"class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i>Supprimer</button>
+
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+    </div>
+
+    {!! $patients->links() !!}
 @endsection

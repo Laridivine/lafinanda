@@ -25,7 +25,7 @@ class Patient extends Model
 
 ];
 
-public function Pathologie(){
-    return $this->belongsTo(Pathologie::class, "pathologie_id");
+public function pathologie(){
+    return $this->belongsTo(Pathologie::class, "pathology_id");
 }
 }

@@ -1,79 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>lafinanda</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-</head>
-<body>
+@extends('layouts.menu')
 
-<div class="col-sm-12 col-xl-6">
-<div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('medecins.index') }}"> Retour</a>
-            </div>
-    <div class="bg-light rounded h-100 p-4">
-            <div class="pull-left mb-2">
+@section('content')
+
+<div class="container shadow-none bg-light mt-3  " style="width: 50rem; margin-top:60px">
+    <div class="row card p-5 text-center">
+        <div class="row margin-tb">
+            <div class="col-sm-11">
                 <h2>Enregistrer un medecin</h2>
             </div>
-           
+        </div>
+    </div>
+</div>
+<br><br>
 
-                @if(session('status'))
-            <div class="alert alert-success mb-1 mt-1">
-                {{ session('status') }}
+@if ($errors->any())
+<div class="alert alert-danger">
+    <strong>Errors!</strong>Please chek carefully....<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+<form action="{{ route('medecins.store') }}" method="POST">
+    @csrf
+    <form>
+
+        <div class="container card shadow-lg p-3 mb-5" style="width: 50rem;">
+            <div class="row mb-12 p-3">
+                <label for="" class="col-sm-3 col-form-label">Nom</label>
+                <div class="col-sm-9">
+                    <input type="string" class="form-control" name="nom" id="" placeholder="Nom">
+                </div>
             </div>
-                @endif
-            <form action="{{ route('medecins.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-                            <div class="row mb-3">
-                                    <label for="" class="col-sm-2 col-form-label">Nom</label>
-                                <div class="col-sm-10">
-                                        <input type="text" name="nom"class="form-control" id="">
-                                        @error('nom')
-                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
+
+            <div class="row mb-12 p-3">
+                <label for="epatient_prenom" class="col-sm-3 col-form-label">Prenom</label>
+                <div class="col-sm-9">
+                    <input type="string" class="form-control" name="prenom" id="" placeholder="Prenom">
+                </div>
+            </div>
+
+            <div class="row mb-12 p-3">
+                <label for="" class="col-sm-3 col-form-label">Specialité</label>
+                <div class="col-sm-9">
+                    <select name="specialite_id" class="form-control" id="">
+                        <option value=""></option>
+                        @foreach ($specialites as $specialite)
+                        <option value="{{$specialite->id}}">{{$specialite->libelle}}</option>
+                        @endforeach
+                    </select>
+                    @error('specialite')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
 
 
-                            <div class="row mb-3">
-                                    <label for="" class="col-sm-2 col-form-label">Prenom</label>
-                                <div class="col-sm-10">
-                                        <input type="text" name="prenom"class="form-control" id="">
-                                        @error('prenom')
-                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
+            <div class="row mb-12 p-3">
+                <label for="" class="col-sm-3 col-form-label">Téléphone</label>
+                <div class="col-sm-9">
+                    <input type="string" class="form-control" name="numero_telephone" id="" placeholder="Réléphone">
+                </div>
+            </div><br>
 
-                            <div class="row mb-3">
-                                    <label for="" class="col-sm-2 col-form-label">Spécialité</label>
-                                <div class="col-sm-10">
-                                <select name="specialite_id" id="">
-                                    <option value=""></option>
-                                    @foreach ($specialites as $specialite)
-                                <option value="{{$specialite->id}}">{{$specialite->id}}</option>
-                                    @endforeach
-                                </select>
-                                @error('specialite')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                @enderror
-                                </div>
-                                </div>
 
-                                <div class="row mb-3">
-                                    <label for=""  class="col-sm-2 col-form-label">Téléphone:</label>
-                                <div class="col-sm-10">
-                                        <input type="string" name="numero_telephone"class="form-control" id="">
-                                        @error('numero_telephone')
-                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
 
-<button type="submit" class="btn btn-primary">Enregistrer</button>
+            <div class="row card text-center">
 
-</form>
-</div>
-</div>
-</body>
-</html>
+                <div class="col-sm-12 p-3">
+                    <button type="submit" class="btn btn-primary btn-lg shadow-lg">Enregistrer</button>
+                    <a class="btn btn-danger btn-lg shadow-lg" href="{{ route('medecins.index') }}"> Annuler</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    @endsection

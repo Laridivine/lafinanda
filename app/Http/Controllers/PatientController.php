@@ -44,7 +44,7 @@ $request->validate([
 'numero_telephone' => 'required',
 'derniere_consultation' => 'required',
 'derniere_consultation' => 'required',
-'pathologie_id' => 'required',
+'pathology_id' => 'required',
 'traitement' => 'required',
 
 ]);
@@ -54,7 +54,7 @@ $patient->prenoms = $request->prenoms;
 $patient->adresse = $request->adresse;
 $patient->numero_telephone = $request->numero_telephone;
 $patient->derniere_consultation = $request->derniere_consultation;
-$patient->pathologie_id = $request->pathologie_id;
+$patient->pathology_id = $request->pathology->libelle;
 $patient->traitement = $request->traitement;
 $patient->save();
 return redirect()->route('patients.index')
@@ -91,7 +91,7 @@ public function update(Request $request, $id)
         'adresse' => 'required',
         'numero_telephone' => 'required',
         'derniere_consultation' => 'required',
-        'pathologie_id' => 'required',
+        'pathology_id' => 'required',
         'traitement' => 'required',
         
         ]);
@@ -101,7 +101,7 @@ public function update(Request $request, $id)
         $patient->adresse = $request->adresse;
         $patient->numero_telephone = $request->numero_telephone;
         $patient->derniere_consultation = $request->derniere_consultation;
-        $patient->pathologie_id = $request->pathologie_id;
+        $patient->pathology_id = $request->pathology->libelle;
         $patient->traitement = $request->adresse;
         $patient->save();
 return redirect()->route('patients.index')

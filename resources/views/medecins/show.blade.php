@@ -33,7 +33,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Spécialité:</strong>
-                {{ $medecin->specialite_id}}
+                {{ $medecin->specialite->libelle}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
