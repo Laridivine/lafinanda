@@ -30,6 +30,7 @@
             <th>Prenom</th>
             <th>Adresse</th>
             <th>Telephone</th>
+            <th>Dernière consultation</th>
             <th>Pathologie</th>
             <th>Traitement</th>
 
@@ -42,6 +43,7 @@
                 <td>{{ $patient->prenoms }}</td>
                 <td>{{ $patient->adresse }}</td>
                 <td>{{ $patient->numero_telephone }}</td>
+                <td>{{ $patient->derniere_consultation }}</td>
                 <td>{{ $patient->pathologie->libelle }}</td>
                 <td>{{ $patient->traitement }}</td>
             <td class="shadow">

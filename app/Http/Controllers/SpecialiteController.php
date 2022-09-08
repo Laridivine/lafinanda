@@ -81,7 +81,7 @@ public function update(Request $request, $id)
         
         
         ]);
-        $specialite = new Specialite();
+        $specialite = specialite::find($id);
         $specialite->libelle = $request->libelle;
         $specialite->save();
 return redirect()->route('specialites.index')

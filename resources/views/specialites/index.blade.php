@@ -9,7 +9,7 @@
                     <h3>Liste des specialite</h3>
                 </div>
                 <div class="col-sm-3">
-                    <a class="btn btn-primary" href="{{ route('patients.create') }}"> Enregistrer une specialité</a>
+                    <a class="btn btn-primary" href="{{ route('specialites.create') }}"> Enregistrer une specialité</a>
                 </div>
             </div>
         </div>

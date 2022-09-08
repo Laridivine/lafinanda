@@ -48,7 +48,7 @@ $request->validate([
 $medecin = new Medecin();
 $medecin->nom = $request->nom;
 $medecin->prenom = $request->prenom;
-$medecin->specialite_id = $request->specialite->libelle;
+$medecin->specialite_id = $request->specialite_id;
 $medecin->numero_telephone = $request->numero_telephone;
 $medecin->save();
 return redirect()->route('medecins.index')
@@ -87,7 +87,7 @@ public function update(Request $request, $id)
     $request->validate([
         'nom' => 'required',
         'prenom' => 'required',
-        'specialite' => 'required',
+        'specialite_id' => 'required',
         'numero_telephone' => 'required',
         
         
@@ -95,7 +95,7 @@ public function update(Request $request, $id)
         $medecin = medecin::find($id);
         $medecin->nom = $request->nom;
         $medecin->prenom = $request->prenom;
-        $medecin->specialite_id = $request->specialite->libelle;
+        $medecin->specialite_id = $request->specialite_id;
         $medecin->numero_telephone = $request->numero_telephone;
         $medecin->save();
 return redirect()->route('medecins.index')

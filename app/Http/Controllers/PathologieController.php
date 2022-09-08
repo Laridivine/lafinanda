@@ -81,7 +81,7 @@ public function update(Request $request, $id)
         
         
         ]);
-        $pathology = new Pathologie();
+        $pathology = pathologie::find($id);
         $pathology->libelle = $request->libelle;
         $pathology->save();
 return redirect()->route('pathologies.index')

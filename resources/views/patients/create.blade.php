@@ -30,30 +30,37 @@
 
         <div class="container card shadow-lg p-3 mb-5" style="width: 50rem;">
             <div class="row mb-12 p-3">
-                <label for="patient_name" class="col-sm-3 col-form-label">Nom</label>
+                <label for="" class="col-sm-3 col-form-label">Nom</label>
                 <div class="col-sm-9">
-                    <input type="string" class="form-control" name="nom" id="patient_nom" placeholder="Nom">
+                    <input type="string" class="form-control" name="nom" id="nom" placeholder="Nom">
                 </div>
             </div>
 
             <div class="row mb-12 p-3">
-                <label for="epatient_prenom" class="col-sm-3 col-form-label">Prenom</label>
+                <label for="prenom" class="col-sm-3 col-form-label">Prenom</label>
                 <div class="col-sm-9">
-                    <input type="string" class="form-control" name="prenom" id="patient_prenom" placeholder="Prenom">
+                    <input type="string" class="form-control" name="prenoms" id="prenoms" placeholder="Prenom">
                 </div>
             </div>
 
             <div class="row mb-12 p-3">
-                <label for="patient_adresse" class="col-sm-3 col-form-label">Adresse</label>
+                <label for="" class="col-sm-3 col-form-label">Adresse</label>
                 <div class="col-sm-9">
-                    <input type="string" class="form-control" name="adresse" id="patient_adresse" placeholder="Adresse">
+                    <input type="string" class="form-control" name="adresse" id="adresse" placeholder="Adresse">
                 </div>
             </div>
 
             <div class="row mb-12 p-3">
-                <label for="patient_telephone" class="col-sm-3 col-form-label">Telephone</label>
+                <label for="" class="col-sm-3 col-form-label">Telephone</label>
                 <div class="col-sm-9">
-                    <input type="string" class="form-control" name="telephone" id="patient_telephone" placeholder="Telephone">
+                    <input type="string" class="form-control" name="numero_telephone" id="patient_telephone" placeholder="Telephone">
+                </div>
+            </div>
+
+            <div class="row mb-12 p-3">
+                <label for="" class="col-sm-3 col-form-label">dernière consultation</label>
+                <div class="col-sm-9">
+                    <input type="date" class="form-control" name="derniere_consultation" id="" placeholder="Dernière consultation">
                 </div>
             </div>
 
@@ -63,12 +70,10 @@
                     <select name="pathology_id" class="form-control" id="">
                         <option value=""></option>
                         @foreach ($pathologies as $pathology)
-                        <option value="{{$pathology->id}}">{{$pathology->libelle}}</option>
+                        <option name="pathology_id" value="{{$pathology->id}}">{{$pathology->libelle}}</option>
                         @endforeach
                     </select>
-                    @error('pathology')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                    @enderror
+                
                 </div>
             </div>
 

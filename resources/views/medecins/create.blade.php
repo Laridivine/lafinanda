@@ -62,7 +62,7 @@
             <div class="row mb-12 p-3">
                 <label for="" class="col-sm-3 col-form-label">Téléphone</label>
                 <div class="col-sm-9">
-                    <input type="string" class="form-control" name="numero_telephone" id="" placeholder="Réléphone">
+                    <input type="string" class="form-control" name="numero_telephone" id="" placeholder="Téléphone">
                 </div>
             </div><br>
 
