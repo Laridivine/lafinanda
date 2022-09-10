@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" >
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -54,10 +54,7 @@
                             @endif
                         @else
                             
-                            <li><a class="nav-link" href="{{ route('patients.index') }}">Gestion des patients</a></li>
-                            <li><a class="nav-link" href="{{ route('medecins.index') }}">Gestion des medecins</a></li>
-                            <li><a class="nav-link" href="{{ route('specialites.index') }}">Gestion des spécialités</a></li>
-                            <li><a class="nav-link" href="{{ route('pathologies.index') }}">Gestion des pathologies</a></li>
+                            
                             
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

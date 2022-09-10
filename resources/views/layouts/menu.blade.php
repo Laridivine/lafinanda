@@ -52,27 +52,25 @@
           <!-- ################# MAIN MENU ################### -->
           <!-- leftpanel-profile -->
           <div class="media leftpanel-profile">
-        <div class="media-left">
-          <a href="#">
-            <img src="../images/photos/loggeduser.png" alt="" class="media-object img-circle">
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">{{Auth::user()->name}} <a data-toggle="collapse" data-target="#loguserinfo" class="pull-right"><i class="fa fa-angle-down"></i></a></h4>
-          <span>Médecin-chef</span>
-        </div>
-      </div><!-- leftpanel-profile -->
-      <ul class="nav nav-tabs nav-justified nav-sidebar">
-  
-        <li class="tooltips" data-toggle="tooltip" title="Log Out"><a href="signin.html"><i class="fa fa-sign-out"></i></a></li>
-      </ul>
+
+            <div class="media-body">
+              <h4 class="media-heading">{{Auth::user()->name}} <a data-toggle="collapse" data-target="#loguserinfo" class="pull-right"></a></h4>
+              <span>Médecin-chef</span>
+            </div>
+          </div><!-- leftpanel-profile -->
+          <div class="nav nav-tabs nav-justified nav-sidebar">
+
+            <li class="tooltips" data-toggle="tooltip" title="Log Out"><a href="{{ url('logout') }}"><pi class="fa fa-sign-out"></i></a>
+              
+            </li>
+          </div>
 
           <div class="tab-pane active" id="mainmenu">
 
             <ul class="nav nav-pills nav-stacked nav-quirk">
-              
 
-                
+
+
               <li class="active"><a href="{{ route('home') }}"><i class="fa fa-home"></i> <span>Acceuil</span></a></li><br>
               <li><a href="{{ route('patients.index') }}"><i class="fa fa-users"></i> <span>Patient</span></a></li>
               <li><a href="{{ route('medecins.index') }}" class="nav-item nav-link"><i class="fa fa-user-md" aria-hidden="true"></i>Médecins</a></li>
