@@ -1,53 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>lafiapp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-</head>
+@extends('layouts.menu')
 
-<body>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Voir medecin</h2>
+@section('content')
+
+
+<div class="container shadow-none bg-light mt-5  " style="width: 50rem; margin-top:100px">
+        <div class="row card p-5 text-center">
+            <div class="row margin-tb">
+                <div class="col-sm-11">
+                    <h2>Voir un médecin </h2>
+                </div>
             </div>
-            
         </div>
+        </div>
+ 
+<div class="container card shadow-lg p-3 mb-5" style="width: 50rem;">
+    <div class="row mb-12 p-3">
+      <label for="nom" class="col-sm-3 col-form-label">Nom</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $medecin->nom }}"  name="nom" id="nom" placeholder="Nom" disabled readonly>
+      </div>
     </div>
 
+    <div class="row mb-12 p-3">
+      <label for="prenom" class="col-sm-3 col-form-label">Prenom</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $medecin->prenom }}"  name="prenom" id="prenom" placeholder="Prenom" disabled readonly>
+      </div>
+    </div>
+ 
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nom:</strong>
-                {{ $medecin->nom }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Prenom:</strong>
-                {{ $medecin->prenom }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Spécialité:</strong>
-                {{ $medecin->specialite->libelle}}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Numero de téléphone:</strong>
-                {{ $medecin->numero_telephone }}
-            </div>
-        </div>
+    <div class="row mb-12 p-3">
+      <label for="" class="col-sm-3 col-form-label">Spécialité</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $medecin->specialite->libelle }}"  name="specialite_id" id="specialite" placeholder="Spécialité" disabled readonly>
+      </div>
     </div>
 
-    <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('medecins.index') }}"> Retour</a>
-            </div>
+    <div class="row mb-12 p-3">
+      <label for="prenom" class="col-sm-3 col-form-label">Email</label>
+      <div class="col-sm-9">
+        <input type="string" class="form-control" value="{{ $medecin->email }}"  name="email" id="" placeholder="Email" disabled readonly>
+      </div>
+    </div>
 
-<p class="text-center text-primary"><small></small></p>
-</body>
-</html>
+    
+</div>
+
+@endsection

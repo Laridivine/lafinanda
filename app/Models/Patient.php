@@ -20,7 +20,7 @@ class Patient extends Model
         'adresse',
         'numero_telephone',
         'derniere_consultation',
-        'pathologie_id',
+        'pathology_id',
         'traitement',
 
 ];

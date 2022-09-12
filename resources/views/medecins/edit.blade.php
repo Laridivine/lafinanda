@@ -58,9 +58,9 @@
     </div>
 
     <div class="row mb-12 p-3">
-      <label for="" class="col-sm-3 col-form-label">Telephone</label>
+      <label for="" class="col-sm-3 col-form-label">Email</label>
       <div class="col-sm-9">
-        <input type="string" class="form-control" value="{{ $medecin->numero_telephone }}" name="numero_telephone" id="" placeholder="Telephone">
+        <input type="string" class="form-control" value="{{ $medecin->email }}" name="email" id="" placeholder="email">
       </div>
     </div>
 

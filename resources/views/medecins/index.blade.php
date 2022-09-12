@@ -29,7 +29,7 @@
             <th> Nom</th>
             <th> Prenoms</th>
             <th> Spécialité</th>
-            <th> Numéro de téléphone</th>
+            <th> Email</th>
             <th width="230px">Actions</th>
         </tr>
         @foreach ($medecins as $medecin)
@@ -38,7 +38,7 @@
             <td>{{ $medecin->nom }}</td>
             <td>{{ $medecin->prenom }}</td>
             <td>{{ $medecin->specialite->libelle }}</td>
-            <td>{{ $medecin->numero_telephone }}</td>
+            <td>{{ $medecin->email }}</td>
             <td class="shadow">
                 <form action="{{ route('medecins.destroy',$medecin->id) }}" method="POST">
 

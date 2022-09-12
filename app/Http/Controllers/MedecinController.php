@@ -41,7 +41,7 @@ $request->validate([
 'nom' => 'required',
 'prenom' => 'required',
 'specialite_id' => 'required',
-'numero_telephone' => 'required',
+'email' => 'required',
 
 
 ]);
@@ -49,7 +49,7 @@ $medecin = new Medecin();
 $medecin->nom = $request->nom;
 $medecin->prenom = $request->prenom;
 $medecin->specialite_id = $request->specialite_id;
-$medecin->numero_telephone = $request->numero_telephone;
+$medecin->email = $request->email;
 $medecin->save();
 return redirect()->route('medecins.index')
 ->with('success','Medecin créé avec succès.');
@@ -88,7 +88,7 @@ public function update(Request $request, $id)
         'nom' => 'required',
         'prenom' => 'required',
         'specialite_id' => 'required',
-        'numero_telephone' => 'required',
+        'email' => 'required',
         
         
         ]);
@@ -96,7 +96,7 @@ public function update(Request $request, $id)
         $medecin->nom = $request->nom;
         $medecin->prenom = $request->prenom;
         $medecin->specialite_id = $request->specialite_id;
-        $medecin->numero_telephone = $request->numero_telephone;
+        $medecin->email = $request->email;
         $medecin->save();
 return redirect()->route('medecins.index')
 ->with('success','Medecin mis à jour avec succès');

@@ -58,10 +58,15 @@
               <span>Médecin-chef</span>
             </div>
           </div><!-- leftpanel-profile -->
-          <div class="nav nav-tabs nav-justified nav-sidebar">
+          <div class="nav nav-tabs nav-justified nav-sidebar" >
 
-            <li class="tooltips" data-toggle="tooltip" title="Log Out"><a href="{{ url('logout') }}"><pi class="fa fa-sign-out"></i></a>
+           <form method="POST" action="{{ route('logout') }}">
+            @csrf
+           <!-- <li class="tooltips" data-toggle="tooltip" title="Log Out"> -->
+            <button type="submit" style="margin-left:100px ;"><i class="fa fa-sign-out" ></i>
+            </button>
               
+           </form>
             </li>
           </div>
 
